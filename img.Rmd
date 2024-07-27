@@ -1,0 +1,80 @@
+---
+title: "Image K-Means Color Clustering"
+output:
+  pdf_document: default
+  html_document: default
+date: "2024-07-27"
+---
+```{r}
+library(jpeg) 
+library(ggplot2)
+```
+# Load the image (using a file dialog)
+```{r}
+img <- readJPEG(file.choose())
+```
+#Obtaing dimensions
+```{r}
+imgDm<-dim(img)
+```
+# Create a data frame from image data for manipulation with ggplot2
+```{r}
+imgRGB <- data.frame(
+  x = rep(1:imgDm[2], each = imgDm[1]),
+  y = rep(imgDm[1]:1, imgDm[2]),
+  R = as.vector(img[,,1]),
+  G = as.vector(img[,,2]),
+  B = as.vector(img[,,3])
+)
+
+```
+# Display the original image using ggplot2
+```{r}
+ggplot(data = imgRGB, aes(x = x, y = y)) + 
+  geom_point(colour = rgb(imgRGB[c("R", "G", "B")])) + 
+  labs(title = "bird", x = "x", y = "y") 
+```
+```{r}
+# Set the number of clusters (colors) for k-means
+kClusters <- 3
+
+# Perform k-means clustering on the RGB values of the image
+kMeans <- kmeans(imgRGB[, c("R", "G", "B")], centers = kClusters)
+
+# Get the RGB values of the cluster centers (these represent our main colors)
+kColours <- rgb(kMeans$centers[kMeans$cluster,])
+```
+# Display the image using the clustered colors
+```{r}
+ggplot(data = imgRGB, aes(x = x, y = y)) + 
+  geom_point(colour = kColours) +
+  labs(title = paste("k-Means Clustering of", kClusters, "Colours")) +
+  xlab("x") +
+  ylab("y")
+```
+```{r}
+# Set the number of clusters to 5
+kClusterss <- 5
+kMeanss <- kmeans(imgRGB[, c("R", "G", "B")], centers = kClusterss)
+kColourss <- rgb(kMeanss$centers[kMeanss$cluster,])
+```
+```{r}
+ggplot(data = imgRGB, aes(x = x, y = y)) + 
+  geom_point(colour = kColourss) +
+  labs(title = paste("k-Means Clustering of", kClusterss, "Colours")) +
+  xlab("x") +
+  ylab("y")
+```
+```{r}
+# Set the number of clusters to 8
+kClustersss <- 8
+kMeansss <- kmeans(imgRGB[, c("R", "G", "B")], centers = kClustersss)
+kColoursss <- rgb(kMeansss$centers[kMeansss$cluster,])
+```
+```{r}
+ggplot(data = imgRGB, aes(x = x, y = y)) + 
+  geom_point(colour = kColoursss) +
+  labs(title = paste("k-Means Clustering of", kClusterss, "Colours")) +
+  xlab("x") +
+  ylab("y")
+```
