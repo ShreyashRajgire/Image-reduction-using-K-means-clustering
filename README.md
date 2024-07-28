@@ -17,19 +17,9 @@ The code demonstrates this process using different 'k' values. The results illus
 **Original Image:**
 ![image](https://github.com/user-attachments/assets/ce56df34-7b42-4467-baf6-5499030ef31b)
 
-
-**Compressed Images:**
-![image](https://github.com/user-attachments/assets/42eb58bf-77a9-4409-89b7-0faa8cb01418)
-k means clustering of 3 colours
-![image](https://github.com/user-attachments/assets/a01657b0-22ea-48e3-a628-75ae5d74a946)
-k means clustering of 5 colours
-![image](https://github.com/user-attachments/assets/be44fb19-977a-4cd0-9e63-1b85faa1d6c7)
-k means clustering of 8 colours
-
-
 | k = 3                     | k = 5                     | k = 8                     |
 |-----------------------------|-----------------------------|-----------------------------|
-| ![k=3](images/k3_image.png) | ![k=5](images/k5_image.png) | ![k=8](images/k8_image.png) |
+| ![k=3](https://github.com/user-attachments/assets/42eb58bf-77a9-4409-89b7-0faa8cb01418) | ![k=5](https://github.com/user-attachments/assets/a01657b0-22ea-48e3-a628-75ae5d74a946) | ![k=8](https://github.com/user-attachments/assets/be44fb19-977a-4cd0-9e63-1b85faa1d6c7) |
 
 ## K-Means Clustering: Business Applications
 
